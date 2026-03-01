@@ -7,7 +7,7 @@ import { Input } from '../../components/ui/input';
 import { Progress } from '../../components/ui/progress';
 import { Card, CardContent } from '../../components/ui/card';
 
-export function WordScramble() {
+export function WordSearch() {
   const navigate = useNavigate();
   const { selectedWordList } = useGame();
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
