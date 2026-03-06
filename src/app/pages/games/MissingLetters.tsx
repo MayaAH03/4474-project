@@ -43,31 +43,28 @@ export function MissingLetters() {
   }, [currentWordIndex, currentWord]);
 
   const getDisplayWord = () => {
-    return currentWord.split('').map((letter, index) => {
-      if (hiddenIndices.includes(index)) {
-        return '_';
-      }
-      return letter;
-    }).join(' ');
-  };
-
-  const getMissingLetters = () => {
-    return hiddenIndices.map(index => currentWord[index]).join('').toLowerCase();
+    return currentWord
+      .split('')
+      .map((letter, index) => (hiddenIndices.includes(index) ? '_' : letter))
+      .join(' ');
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const correct = userAnswer.toLowerCase() === getMissingLetters();
+
+    const correct =
+      userAnswer.trim().toLowerCase() === currentWord.trim().toLowerCase();
+
     setIsCorrect(correct);
     setShowFeedback(true);
 
     if (correct) {
-      setScore(score + 1);
+      setScore((prev) => prev + 1);
     }
 
     setTimeout(() => {
       if (currentWordIndex < selectedWordList.words.length - 1) {
-        setCurrentWordIndex(currentWordIndex + 1);
+        setCurrentWordIndex((prev) => prev + 1);
         setUserAnswer('');
         setShowFeedback(false);
       } else {
@@ -117,7 +114,6 @@ export function MissingLetters() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-100 via-teal-100 to-blue-100 p-8">
       <div className="max-w-2xl mx-auto">
-        {/* Header */}
         <div className="mb-8">
           <Button
             variant="ghost"
@@ -127,25 +123,38 @@ export function MissingLetters() {
             <ArrowLeft className="w-4 h-4" />
             Back
           </Button>
-          <div className="flex items-center justify-between mb-4">
+
+          <div className="mb-4">
+            <div className="flex items-center justify-between">
             <h1 className="text-3xl font-bold text-teal-800">Missing Letters</h1>
-            <div className="text-2xl font-bold text-teal-600">Score: {score}/{selectedWordList.words.length}</div>
+            <div className="text-2xl font-bold text-teal-600">
+              Score: {score}/{selectedWordList.words.length}
+            </div>
           </div>
+
+  <p className="text-center text-lg text-teal-700 mt-2">
+    Word List: <span className="font-semibold">{selectedWordList.name}</span>
+  </p>
+</div>
+
           <Progress value={progress} className="h-3" />
           <p className="text-center mt-2 text-teal-700">
             Word {currentWordIndex + 1} of {selectedWordList.words.length}
           </p>
         </div>
 
-        {/* Game Card */}
         <Card className="p-8">
           <CardContent>
             <div className="text-center mb-8">
-              <p className="text-xl mb-6">Fill in the missing letters:</p>
-              <div className="bg-gradient-to-br from-green-400 to-teal-400 text-white px-8 py-8 rounded-2xl mb-6">
-                <p className="text-5xl font-bold tracking-widest font-mono">{getDisplayWord()}</p>
+              <p className="text-xl mb-6">Type the full word:</p>
+
+              <div className="bg-gradient-to-br from-green-400 to-teal-400 text-white px-6 py-8 rounded-2xl mb-6 overflow-x-auto">
+                <p className="text-3xl md:text-4xl font-bold font-mono whitespace-nowrap text-center">
+                  {getDisplayWord()}
+                </p>
               </div>
-              <p className="text-gray-600">Type only the missing letters in order</p>
+
+              <p className="text-gray-600">Look at the missing letters and type the complete word</p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -154,7 +163,7 @@ export function MissingLetters() {
                   type="text"
                   value={userAnswer}
                   onChange={(e) => setUserAnswer(e.target.value)}
-                  placeholder="Type missing letters..."
+                  placeholder="Type the full word..."
                   className="text-2xl text-center h-16"
                   disabled={showFeedback}
                   autoFocus
@@ -167,22 +176,28 @@ export function MissingLetters() {
                     <>
                       <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-2" />
                       <p className="text-2xl font-bold text-green-800">Correct!</p>
-                      <p className="text-xl text-green-700 mt-2">The word is: <span className="font-bold">{currentWord}</span></p>
+                      <p className="text-xl text-green-700 mt-2">
+                        The word is: <span className="font-bold">{currentWord}</span>
+                      </p>
                     </>
                   ) : (
                     <>
                       <XCircle className="w-16 h-16 text-red-600 mx-auto mb-2" />
                       <p className="text-2xl font-bold text-red-800">Not quite!</p>
-                      <p className="text-xl text-red-700 mt-2">The complete word is: <span className="font-bold">{currentWord}</span></p>
+                      <p className="text-xl text-red-700 mt-2">
+                        The complete word is: <span className="font-bold">{currentWord}</span>
+                      </p>
                     </>
                   )}
                 </div>
               )}
 
               {!showFeedback && (
-                <Button type="submit" size="lg" className="w-full">
-                  Submit Answer
-                </Button>
+                <div className="flex justify-center mt-4">
+                  <Button type="submit" size="sm" className="px-6">
+                    Submit Answer
+                  </Button>
+                </div>
               )}
             </form>
           </CardContent>
