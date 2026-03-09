@@ -4,6 +4,7 @@ import { GameOptions } from "./pages/GameOptions";
 import { SpellingBee } from "./pages/games/SpellingBee";
 import { WordScramble } from "./pages/games/WordScramble";
 import { MissingLetters } from "./pages/games/MissingLetters";
+import { WordSearch } from "./pages/games/WordSearch";
 
 export const router = createBrowserRouter([
   {
@@ -25,5 +26,9 @@ export const router = createBrowserRouter([
   {
     path: "/game/missing-letters",
     Component: MissingLetters,
+  },
+  {
+    path: "/game/word-search",
+    Component: WordSearch, // MAKE WORDSEARCH FUNCTION
   },
 ]);

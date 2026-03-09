@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router';
-import { ArrowLeft, Volume2, Shuffle, ListChecks } from 'lucide-react';
+import { ArrowLeft, Volume2, Shuffle, ListChecks, Search } from 'lucide-react';
 import { useGame } from '../context/GameContext';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
@@ -38,6 +38,14 @@ export function GameOptions() {
       icon: ListChecks,
       color: 'from-green-400 to-teal-400',
       path: '/game/missing-letters'
+    },
+    {
+      id: 'word-search',
+      name: 'Word Search',
+      description: 'Find the words hidden in the grid.',
+      icon: Search, 
+      color: 'from-pink-400 to-purple-400',
+      path: '/game/word-search'
     }
   ];
 
