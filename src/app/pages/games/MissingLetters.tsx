@@ -119,7 +119,7 @@ export function MissingLetters() {
           <Button
             variant="ghost"
             onClick={() => navigate('/game-options')}
-            className="gap-2 mb-4"
+            className="gap-2 mb-4 hover:shadow-xl transition-all cursor-pointer border-2 hover:scale-105"
           >
             <ArrowLeft className="w-4 h-4" />
             Back
@@ -187,7 +187,7 @@ export function MissingLetters() {
 
               {!showFeedback && (
                 <div className="flex justify-center mt-4">
-                  <Button type="submit" size="sm" className="px-6">
+                  <Button type="submit" size="sm" className="w-full px-6 hover:shadow-xl transition-all cursor-pointer border-2 hover:scale-105">
                     Submit Answer
                   </Button>
                 </div>

@@ -104,7 +104,7 @@ export function SpellingBee() {
           <Button
             variant="ghost"
             onClick={() => navigate('/game-options')}
-            className="gap-2 mb-2"
+            className="gap-2 mb-2 hover:shadow-xl transition-all cursor-pointer border-2 hover:scale-105"
           >
             <ArrowLeft className="w-4 h-4" />
             Back
@@ -164,7 +164,7 @@ export function SpellingBee() {
               )}
 
               {!showFeedback && (
-                <Button type="submit" size="lg" className="w-full">
+                <Button type="submit" size="lg" className="w-full hover:shadow-xl transition-all cursor-pointer border-2 hover:scale-105">
                   Submit Answer
                 </Button>
               )}

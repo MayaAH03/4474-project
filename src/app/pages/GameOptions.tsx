@@ -49,7 +49,7 @@ export function GameOptions() {
           <Button
             variant="ghost"
             onClick={() => navigate('/')}
-            className="gap-2 mb-4"
+            className="gap-2 mb-4 hover:shadow-xl transition-all cursor-pointer border-2 hover:scale-105"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Word Lists

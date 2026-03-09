@@ -89,7 +89,7 @@ export function Home() {
         <div className="flex justify-center mb-8">
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
-              <Button size="lg" className="gap-2 hover:shadow-xl">
+              <Button size="lg" className="gap-2 hover:shadow-xl hover:shadow-xl transition-all cursor-pointer border-2 hover:scale-105">
                 <Plus className="w-5 h-5" />
                 Create Your Own Word List
               </Button>

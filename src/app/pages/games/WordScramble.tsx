@@ -113,7 +113,7 @@ export function WordScramble() {
           <Button
             variant="ghost"
             onClick={() => navigate('/game-options')}
-            className="gap-2 mb-2"
+            className="gap-2 mb-2 hover:shadow-xl transition-all cursor-pointer border-2 hover:scale-105"
           >
             <ArrowLeft className="w-4 h-4" />
             Back
@@ -141,6 +141,7 @@ export function WordScramble() {
               {!showFeedback && (<Button
                 onClick={handleReshuffle}
                 variant="outline"
+                className="hover:shadow-xl transition-all cursor-pointer border-2 hover:scale-105"
                 size="sm"
               >
                 <RefreshCw className="w-4 h-2" />
@@ -179,7 +180,7 @@ export function WordScramble() {
               )}
 
               {!showFeedback && (
-                <Button type="submit" size="lg" className="w-full">
+                <Button type="submit" size="lg" className="w-full hover:shadow-xl transition-all cursor-pointer border-2 hover:scale-105">
                   Submit Answer
                 </Button>
               )}
