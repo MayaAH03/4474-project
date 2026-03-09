@@ -120,7 +120,7 @@ export function SpellingBee() {
         </div>
 
         {/* Game Card */}
-        <Card className="p-4 bg-">
+        <Card className="p-4 border-0 bg-">
           <CardContent>
             <div className="text-center mb-4">
               {!showFeedback && <p className="text-xl mb-3">Listen and spell the word:</p>}
