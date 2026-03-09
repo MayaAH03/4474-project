@@ -17,7 +17,7 @@ export const predefinedWordLists: WordList[] = [
   },
   {
     id: '2',
-    name: 'Colors',
+    name: 'Colours',
     difficulty: 'easy',
     words: [
       'red', 'blue', 'green', 'yellow', 'orange', 'purple', 'pink', 'brown',

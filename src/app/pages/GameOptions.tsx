@@ -3,6 +3,7 @@ import { ArrowLeft, Volume2, Shuffle, ListChecks } from 'lucide-react';
 import { useGame } from '../context/GameContext';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
+import "./Home.css";
 
 export function GameOptions() {
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ export function GameOptions() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-100 to-blue-100 p-8">
+    <div className="min-h-screen p-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-8">

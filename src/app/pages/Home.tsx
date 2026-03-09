@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { BookOpen, Plus, Sparkles } from 'lucide-react';
+import {Apple, BookOpen, PaletteIcon, Plus, Shrub, Squirrel, Trophy} from 'lucide-react';
 import { predefinedWordLists, WordList } from '../data/wordLists';
 import { useGame } from '../context/GameContext';
 import { Button } from '../components/ui/button';
@@ -9,6 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../co
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '../components/ui/dialog';
 import { Label } from '../components/ui/label';
 import { Badge } from '../components/ui/badge';
+import "./Home.css";
 
 export function Home() {
   const navigate = useNavigate();
@@ -54,15 +55,32 @@ export function Home() {
     }
   };
 
+  const getIcon = (categoryName: string) => {
+    switch (categoryName) {
+      case 'Animals':
+        return <Squirrel className="w-6 h-6 text-purple-600" />
+      case 'Colours':
+        return <PaletteIcon className="w-6 h-6 text-purple-600" />
+      case 'Food':
+        return <Apple className="w-6 h-6 text-purple-600" />
+      case 'Nature':
+        return <Shrub className="w-6 h-6 text-purple-600" />
+      case 'School Words':
+        return <BookOpen className="w-6 h-6 text-purple-600" />
+      case 'Challenge Words':
+        return <Trophy className="w-6 h-6 text-purple-600" />
+      default:
+        return <BookOpen className="w-6 h-6 text-purple-600" />
+    }
+  }
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-100 to-blue-100 p-8">
+    <div>
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center m-4 mb-5">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <Sparkles className="w-12 h-12 text-purple-600" />
-            <h1 className="text-5xl font-bold text-purple-800">Spelling Adventure</h1>
-            <Sparkles className="w-12 h-12 text-purple-600" />
+            <h1 className="text-5xl font-bold text-purple-800 mt-3">Spelling Central</h1>
           </div>
           <p className="text-xl text-purple-600">Choose a word list to start your spelling journey!</p>
         </div>
@@ -71,7 +89,7 @@ export function Home() {
         <div className="flex justify-center mb-8">
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
-              <Button size="lg" className="gap-2">
+              <Button size="lg" className="gap-2 hover:shadow-xl">
                 <Plus className="w-5 h-5" />
                 Create Your Own Word List
               </Button>
@@ -111,7 +129,7 @@ export function Home() {
         </div>
 
         {/* Word Lists Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {predefinedWordLists.map((wordList) => (
             <Card
               key={wordList.id}
@@ -121,7 +139,7 @@ export function Home() {
               <CardHeader>
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-2">
-                    <BookOpen className="w-6 h-6 text-purple-600" />
+                    {getIcon(wordList.name)}
                     <CardTitle>{wordList.name}</CardTitle>
                   </div>
                   <Badge className={getDifficultyColor(wordList.difficulty)}>
@@ -133,8 +151,8 @@ export function Home() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="flex flex-wrap gap-2">
-                  {wordList.words.slice(0, 6).map((word, index) => (
+                <div className="flex flex-wrap gap-1">
+                  {wordList.words.slice(0, 3).map((word, index) => (
                     <span
                       key={index}
                       className="px-2 py-1 bg-purple-100 text-purple-700 rounded text-sm"
@@ -142,9 +160,9 @@ export function Home() {
                       {word}
                     </span>
                   ))}
-                  {wordList.words.length > 6 && (
+                  {wordList.words.length > 3 && (
                     <span className="px-2 py-1 text-purple-600 text-sm">
-                      +{wordList.words.length - 6} more
+                      +{wordList.words.length - 3} more
                     </span>
                   )}
                 </div>

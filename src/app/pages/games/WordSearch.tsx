@@ -6,6 +6,7 @@ import { Button } from '../../components/ui/button';
 import { Input } from '../../components/ui/input';
 import { Progress } from '../../components/ui/progress';
 import { Card, CardContent } from '../../components/ui/card';
+import "../Home.css";
 
 export function WordScramble() {
   const navigate = useNavigate();
@@ -77,7 +78,7 @@ export function WordScramble() {
   if (gameComplete) {
     const percentage = Math.round((score / selectedWordList.words.length) * 100);
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 p-8 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <Card className="max-w-md w-full">
           <CardContent className="pt-6 text-center">
             <Trophy className="w-24 h-24 text-yellow-500 mx-auto mb-4" />
