@@ -123,7 +123,7 @@ export function SpellingBee() {
         <Card className="p-4">
           <CardContent>
             <div className="text-center mb-4">
-              <p className="text-xl mb-3">Listen and spell the word:</p>
+              {!showFeedback && <p className="text-xl mb-3">Listen and spell the word:</p>}
               <Button
                 onClick={speakWord}
                 size="lg"
@@ -147,7 +147,7 @@ export function SpellingBee() {
               </div>
 
               {showFeedback && (
-                <div className={`p-6 rounded-lg text-center ${isCorrect ? 'bg-green-100' : 'bg-red-100'}`}>
+                <div className={`p-3 rounded-lg text-center ${isCorrect ? 'bg-green-100' : 'bg-red-100'}`}>
                   {isCorrect ? (
                     <>
                       <CheckCircle className="w-10 h-10 text-green-600 mx-auto mb-2" />

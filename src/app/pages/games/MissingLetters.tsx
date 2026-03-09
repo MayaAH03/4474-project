@@ -137,10 +137,10 @@ export function MissingLetters() {
           </p>
         </div>
 
-        <Card className="p-8 border-0">
+        <Card className="p-8 border-0 bg-">
           <CardContent>
             <div className="text-center mb-4">
-              <p className="text-xl mb-3">Type the full word:</p>
+              {!showFeedback && <p className="text-xl mb-3">Type the full word:</p>}
 
               <div className="bg-gradient-to-br from-green-400 to-teal-400 text-white px-6 py-8 rounded-2xl mb-6 overflow-x-auto">
                 <p className="text-3xl md:text-4xl font-bold font-mono whitespace-nowrap text-center">
@@ -148,7 +148,7 @@ export function MissingLetters() {
                 </p>
               </div>
 
-              <p className="text-gray-600">Look at the missing letters and type the complete word</p>
+              {!showFeedback && <p className="text-gray-600">Look at the missing letters and type the complete word</p>}
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -159,13 +159,12 @@ export function MissingLetters() {
                   onChange={(e) => setUserAnswer(e.target.value)}
                   placeholder="Type the full word..."
                   className="text-2xl text-center h-7"
-                  disabled={showFeedback}
                   autoFocus
                 />
               </div>
 
               {showFeedback && (
-                <div className={`p-6 rounded-lg text-center ${isCorrect ? 'bg-green-100' : 'bg-red-100'}`}>
+                <div className={`p-3 rounded-lg text-center ${isCorrect ? 'bg-green-100' : 'bg-red-100'}`}>
                   {isCorrect ? (
                     <>
                       <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-2" />

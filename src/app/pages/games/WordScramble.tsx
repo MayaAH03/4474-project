@@ -131,21 +131,21 @@ export function WordScramble() {
         {/* Game Card */}
         <Card className="p-8 border-0">
           <CardContent>
-            <div className="text-center mb-8">
-              <p className="text-xl mb-6">Unscramble the letters:</p>
+            <div className="text-center mb-4">
+              {!showFeedback && <p className="text-xl mb-6">Unscramble the letters:</p>}
               <div className="flex items-center justify-center gap-2 mb-2">
                 <div className="bg-gradient-to-br from-blue-400 to-purple-400 text-white px-8 py-6 rounded-2xl">
                   <p className="text-5xl font-bold tracking-widest">{scrambledWord}</p>
                 </div>
               </div>
-              <Button
+              {!showFeedback && (<Button
                 onClick={handleReshuffle}
                 variant="outline"
                 size="sm"
               >
                 <RefreshCw className="w-4 h-2" />
                 Reshuffle
-              </Button>
+              </Button>)}
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-1">
@@ -162,15 +162,15 @@ export function WordScramble() {
               </div>
 
               {showFeedback && (
-                <div className={`p-6 rounded-lg text-center ${isCorrect ? 'bg-green-100' : 'bg-red-100'}`}>
+                <div className={`p-3 rounded-lg text-center ${isCorrect ? 'bg-green-100' : 'bg-red-100'}`}>
                   {isCorrect ? (
                     <>
-                      <CheckCircle className="w-16 h-16 text-green-600 mx-auto mb-2" />
+                      <CheckCircle className="w-10 h-10 text-green-600 mx-auto mb-2" />
                       <p className="text-2xl font-bold text-green-800">Correct!</p>
                     </>
                   ) : (
                     <>
-                      <XCircle className="w-16 h-16 text-red-600 mx-auto mb-2" />
+                      <XCircle className="w-10 h-10 text-red-600 mx-auto mb-2" />
                       <p className="text-2xl font-bold text-red-800">Not quite!</p>
                       <p className="text-xl text-red-700 mt-2">The correct word is: <span className="font-bold">{currentWord}</span></p>
                     </>
