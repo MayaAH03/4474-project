@@ -129,7 +129,7 @@ export function WordScramble() {
         </div>
 
         {/* Game Card */}
-        <Card className="p-8 border-0">
+        <Card className="p-8 border-0 bg-">
           <CardContent>
             <div className="text-center mb-4">
               {!showFeedback && <p className="text-xl mb-6">Unscramble the letters:</p>}
