@@ -1,8 +1,9 @@
 import { useNavigate } from 'react-router';
-import { ArrowLeft, Volume2, Shuffle, ListChecks } from 'lucide-react';
+import { ArrowLeft, Volume2, Shuffle, ListChecks, Search } from 'lucide-react';
 import { useGame } from '../context/GameContext';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
+import "./Home.css";
 
 export function GameOptions() {
   const navigate = useNavigate();
@@ -37,18 +38,26 @@ export function GameOptions() {
       icon: ListChecks,
       color: 'from-green-400 to-teal-400',
       path: '/game/missing-letters'
+    },
+    {
+      id: 'word-search',
+      name: 'Word Search',
+      description: 'Find the words hidden in the grid.',
+      icon: Search, 
+      color: 'from-pink-400 to-purple-400',
+      path: '/game/word-search'
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-100 via-pink-100 to-blue-100 p-8">
+    <div className="min-h-screen p-8">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-8">
           <Button
             variant="ghost"
             onClick={() => navigate('/')}
-            className="gap-2 mb-4"
+            className="gap-2 mb-4 hover:shadow-xl transition-all cursor-pointer border-2 hover:scale-105"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Word Lists
@@ -60,7 +69,7 @@ export function GameOptions() {
         </div>
 
         {/* Game Options Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {games.map((game) => {
             const Icon = game.icon;
             return (
