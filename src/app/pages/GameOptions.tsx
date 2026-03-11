@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router';
-import { ArrowLeft, Volume2, Shuffle, ListChecks } from 'lucide-react';
+import { ArrowLeft, Volume2, Shuffle, ListChecks, ListCollapse } from 'lucide-react';
 import { useGame } from '../context/GameContext';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
@@ -37,6 +37,14 @@ export function GameOptions() {
       icon: ListChecks,
       color: 'from-green-400 to-teal-400',
       path: '/game/missing-letters'
+    },
+    {
+      id: 'alphabetical',
+      name: 'Alphabetical',
+      description: 'Arrange the words in alphabetical order!',
+      icon: ListCollapse,
+      color: 'from-red-400 to-orange-400',
+      path: '/game/alphabetical'
     }
   ];
 
