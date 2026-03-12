@@ -106,10 +106,10 @@ export function WordScramble() {
   }
 
   return (
-    <div className="min-h-screen p-8">
+    <div className="max-w-6xl mx-auto pt-8">
       <div className="max-w-screen mx-auto">
         {/* Header */}
-        <div className="mb-4">
+        <div className="mb-0">
           <Button
             variant="ghost"
             onClick={() => navigate('/game-options')}
@@ -119,7 +119,7 @@ export function WordScramble() {
             Back
           </Button>
           <div className="flex items-center justify-between mb-2">
-            <h1 className="text-3xl font-bold text-purple-800">Word Scramble</h1>
+            <h1 className="text-3xl font-bold text-purple-800">Word Scramble | Category: {selectedWordList.name}</h1>
             <div className="text-2xl font-bold text-purple-600">Score: {score}/{selectedWordList.words.length}</div>
           </div>
           <Progress value={progress} className="h-3" />

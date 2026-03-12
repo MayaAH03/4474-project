@@ -106,7 +106,7 @@ export function WordSearch() {
   }
 
   return (
-    <div className="min-h-screen p-8">
+    <div className="max-w-6xl mx-auto pt-8">
       <div className="max-w-screen mx-auto">
         <div className="mb-4">
           <Button
