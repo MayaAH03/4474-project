@@ -5,8 +5,17 @@ import { useGame } from '../../context/GameContext';
 import { Button } from '../../components/ui/button';
 import { Card, CardContent } from '../../components/ui/card';
 
-// TODO: function that returns a shuffled copy of the array - should never return the same order as the input array so the player always has to do some work
 function shuffle<T>(arr: T[]): T[] {
+  let currentIndex = arr.length,  randomIndex;
+
+    while (currentIndex != 0) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      [arr[currentIndex], arr[randomIndex]] = [
+        arr[randomIndex], arr[currentIndex]];
+    }
+    
   return [...arr];
 }
 
@@ -43,11 +52,15 @@ export function Alphabetical() {
 
   // Initialize word order
   useEffect(() => {
-    // TODO: Randomize first then limit the word list to 10? words
-    setCorrectOrder([...selectedWordList.words].sort());
+    let shuffledArr = shuffle([...selectedWordList.words]);
+    shuffledArr = shuffledArr.slice(0,10);
+    setCorrectOrder([...shuffledArr].sort());
 
-    // TODO: Shuffle the word list into a random order using shuffle() and store it with setWords(). Make sure the shuffled order is never already the correct alphabetical order
-    setWords([...selectedWordList.words]);
+    while (JSON.stringify(correctOrder) === JSON.stringify(shuffledArr)) {
+      shuffledArr = shuffle([...shuffledArr]);
+    }
+
+    setWords([...shuffledArr]);
   }, [selectedWordList]);
 
   useEffect(() => {
@@ -130,14 +143,27 @@ export function Alphabetical() {
   };
 
   const handleCheck = () => {
-    // TODO: Compare each word in 'words' (the player's solution) against the corresponding word in 'correctOrder'. Count how many are in the correct position and call setScore() with that count.
-    setScore(0);
+    let score = 0;
+    for (let i = 0; i < correctOrder.length; i++) {
+      if(correctOrder[i] == words[i]) {
+        score++;
+      }
+    }
+
+    setScore(score);
     setChecked(true);
   };
 
   const handleRestart = () => {
-    // TODO: Re-shuffle the words into a new random order using shuffle() and call setWords(). Ensure the new order isn't already correct.
-    setWords([...selectedWordList.words]);
+    let shuffledArr = shuffle([...selectedWordList.words]);
+    shuffledArr = shuffledArr.slice(0,10);
+    setCorrectOrder([...shuffledArr].sort());
+
+    while (JSON.stringify(correctOrder) === JSON.stringify(shuffledArr)) {
+      shuffledArr = shuffle([...shuffledArr]);
+    }
+
+    setWords([...shuffledArr]);
     setChecked(false);
     setScore(0);
     setGameComplete(false);
@@ -153,7 +179,7 @@ export function Alphabetical() {
           <CardContent className="pt-6 text-center">
             <Trophy className="w-24 h-24 text-yellow-500 mx-auto mb-4" />
             <h2 className="text-3xl font-bold mb-4">Great Job!</h2>
-            <p className="text-xl mb-2">You placed</p>
+            <p className="text-xl mb-2">You scored</p>
             <p className="text-5xl font-bold text-orange-600 mb-4">
               {score}/{words.length}
             </p>
@@ -221,7 +247,6 @@ export function Alphabetical() {
               {words.map((word, idx) => {
                 const isDragged = dragIdx === idx;
                 const shift = getShift(idx);
-                // TODO: Once correctOrder is populated, this will highlight green for correctly placed words and red for incorrect ones
                 const isCorrect = checked && correctOrder[idx] != null
                   && word.toLowerCase() === correctOrder[idx].toLowerCase();
                 const isWrong = checked && !isCorrect;
