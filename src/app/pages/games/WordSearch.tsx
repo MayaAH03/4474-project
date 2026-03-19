@@ -237,9 +237,10 @@ export function WordSearch() {
 
   return (
     <div className="min-h-150 p-8" onMouseUp={handleMouseUp}>
-      <div className="max-w-150 mx-auto">
+      
         {/* Header */}
-        <div className="mb-4">
+        <div className="w-full mb-6">
+          <div className="px-8">
           <Button
             variant="ghost"
             onClick={() => navigate('/game-options')}
@@ -249,7 +250,7 @@ export function WordSearch() {
             Back
           </Button>
           <div className="flex items-center justify-between mb-2">
-            <h1 className="text-3xl font-bold text-blue-800">Word Search</h1>
+            <h1 className="text-3xl font-bold text-blue-800">Word Search | Category: {selectedWordList.name}</h1>
             <div className="text-2xl font-bold text-blue-600">
               Found: {score}/{wordsInPlay.length}
             </div>
@@ -259,14 +260,18 @@ export function WordSearch() {
             Find all {wordsInPlay.length} words in the grid
           </p>
         </div>
+       </div>
+
+       
 
         {/* Game Layout */}
-        <div className="flex flex-col lg:flex-row gap-6 items-start">
+        <div className="max-w-6xl mx-auto">
+        <div className="flex flex-col lg:flex-row gap-10 items-center justify-center">
           {/* Grid */}
-          <Card className="p-4 border-0 flex-1">
+          <Card className="p-4 border-0 flex items-center justify-center">
             <CardContent className="p-0">
               <div
-                className={`inline-block select-none rounded-xl overflow-hidden transition-all ${flashWrong ? 'ring-4 ring-red-400' : ''}`}
+                className={`mx-auto select-none rounded-xl overflow-hidden transition-all ${flashWrong ? 'ring-4 ring-red-400' : ''}`}
                 onMouseLeave={() => { if (isSelecting) handleMouseUp(); }}
               >
                 {grid.map((row, r) => (
@@ -343,5 +348,6 @@ export function WordSearch() {
         </p>
       </div>
     </div>
+    
   );
 }
