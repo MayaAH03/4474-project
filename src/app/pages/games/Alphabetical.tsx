@@ -219,12 +219,10 @@ export function Alphabetical() {
           </Button>
 
           <div className="flex items-center justify-between mb-4">
-            <h1 className="text-3xl font-bold text-red-800">Alphabetical</h1>
+            <h1 className="text-3xl font-bold text-red-800">Alphabetical | Category: {selectedWordList.name}</h1>
           </div>
 
-          <p className="text-center text-lg text-orange-700">
-            Word List: <span className="font-semibold">{selectedWordList.name}</span>
-          </p>
+        
         </div>
 
         {/* Instructions */}

@@ -15,14 +15,7 @@ export function GameOptions() {
   }
 
   const games = [
-    {
-      id: 'spelling-bee',
-      name: 'Spelling Bee',
-      description: 'Listen to the word and spell it correctly!',
-      icon: Volume2,
-      color: 'from-yellow-400 to-orange-400',
-      path: '/game/spelling-bee'
-    },
+    
     {
       id: 'word-scramble',
       name: 'Word Scramble',
@@ -50,7 +43,7 @@ export function GameOptions() {
     {
       id: 'word-search',
       name: 'Word Search',
-      description: 'Find the words hidden in the grid.',
+      description: 'Find the words hidden in the grid!',
       icon: Search, 
       color: 'from-pink-400 to-purple-400',
       path: '/game/word-search'
