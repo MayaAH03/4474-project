@@ -125,7 +125,7 @@ export function MissingLetters() {
             Back
           </Button>
           <div className="flex items-center justify-between mb-1">
-            <h1 className="text-3xl font-bold text-teal-800">Missing Letters</h1>
+            <h1 className="text-3xl font-bold text-teal-800">Missing Letters | Category: {selectedWordList.name}</h1>
             <div className="text-2xl font-bold text-teal-600">
               Score: {score}/{selectedWordList.words.length}
             </div>
