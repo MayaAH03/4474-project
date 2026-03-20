@@ -36,6 +36,7 @@ export function Home() {
         words,
         difficulty: 'medium'
       };
+      predefinedWordLists.push(customList);
       setSelectedWordList(customList);
       setIsDialogOpen(false);
       navigate('/game-options');
