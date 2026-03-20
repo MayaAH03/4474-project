@@ -106,8 +106,8 @@ export function WordScramble() {
   }
 
   return (
-    <div className="min-h-screen p-8">
-      <div className="max-w-screen mx-auto">
+    <div className="min-h-screen pt-[8vh]">
+      <div className="max-w-3xl mx-auto px-4">
         {/* Header */}
         <div className="mb-4">
           <Button

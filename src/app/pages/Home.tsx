@@ -75,12 +75,12 @@ export function Home() {
   }
 
   return (
-    <div>
-      <div className="max-w-6xl mx-auto">
+    <div className="flex flex-col items-center min-h-screen pt-[8vh]">
+      <div className="max-w-6xl mx-auto w-full px-4">
         {/* Header */}
         <div className="text-center m-4 mb-5">
           <div className="flex items-center justify-center gap-3 mb-4">
-            <h1 className="text-5xl font-bold text-purple-800 mt-3">Spelling Central</h1>
+            <h1 className="text-5xl font-bold text-purple-800 mt-3 px-6 py-3">Spelling Central</h1>
           </div>
           <p className="text-xl text-purple-600">Choose a word list to start your spelling journey!</p>
         </div>
@@ -134,11 +134,11 @@ export function Home() {
         </div>
 
         {/* Word Lists Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-[1fr] gap-5">
           {predefinedWordLists.map((wordList) => (
             <Card
               key={wordList.id}
-              className="hover:shadow-xl transition-shadow cursor-pointer border-2 hover:border-purple-400"
+              className="w-full h-full hover:shadow-xl transition-shadow cursor-pointer border-2 hover:border-purple-400"
               onClick={() => handleSelectWordList(wordList)}
             >
               <CardHeader>
