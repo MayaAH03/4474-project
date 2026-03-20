@@ -114,7 +114,7 @@ export function MissingLetters() {
 
   return (
     <div>
-      <div className="max-w-6xl mx-auto pt-[8vh]">
+      <div className="max-w-4xl mx-auto pt-[8vh]">
         <div className="mt-6">
           <Button
             variant="ghost"
