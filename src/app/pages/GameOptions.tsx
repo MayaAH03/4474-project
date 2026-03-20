@@ -51,7 +51,7 @@ export function GameOptions() {
   ];
 
   return (
-    <div className="min-h-screen p-8">
+    <div className="min-h-screen pt-[8vh]">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-8">

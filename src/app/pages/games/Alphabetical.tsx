@@ -205,7 +205,7 @@ export function Alphabetical() {
   // Main game screen
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-100 via-orange-100 to-yellow-100 p-8">
+    <div className="min-h-screen bg-gradient-to-br from-red-100 via-orange-100 to-yellow-100 pt-[8vh]">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="mb-8">
