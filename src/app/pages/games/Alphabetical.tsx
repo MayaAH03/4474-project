@@ -174,7 +174,8 @@ export function Alphabetical() {
   if (gameComplete) {
     const pct = Math.round((score / words.length) * 100);
     return (
-      <div className="min-h-screen bg-gradient-to-br from-red-100 via-orange-100 to-yellow-100 p-8 flex items-center justify-center">
+      //<div className="min-h-screen bg-gradient-to-br from-red-100 via-orange-100 to-yellow-100 p-8 flex items-center justify-center">
+      <div className="min-h-screen p-8 flex items-center justify-center">
         <Card className="max-w-md w-full">
           <CardContent className="pt-6 text-center">
             <Trophy className="w-24 h-24 text-yellow-500 mx-auto mb-4" />
@@ -205,20 +206,22 @@ export function Alphabetical() {
   // Main game screen
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-100 via-orange-100 to-yellow-100 pt-[8vh]">
-      <div className="max-w-2xl mx-auto">
+    //<div className="min-h-screen bg-gradient-to-br from-red-100 via-orange-100 to-yellow-100 p-8">
+      //<div className="max-w-2xl mx-auto">
+    <div className="min-h-screen p-16">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="mb-8">
+        <div className="mb-4">
           <Button
             variant="ghost"
             onClick={() => navigate('/game-options')}
-            className="gap-2 mb-4"
+            className="gap-2 mb-2"
           >
             <ArrowLeft className="w-4 h-4" />
             Back
           </Button>
 
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center justify-between mb-2">
             <h1 className="text-3xl font-bold text-red-800">Alphabetical | Category: {selectedWordList.name}</h1>
           </div>
 
