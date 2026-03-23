@@ -125,6 +125,7 @@ export function WordSearch() {
 
   const initGame = useCallback(() => {
     if (!wordsToFind.length) return;
+    wordsToFind.sort(() => Math.random() - 0.5); // shuffle words
     const limited = wordsToFind.slice(0, 10); // cap at 10 words for grid fit
     const { grid: g, placements: p } = buildGrid(limited);
     setGrid(g);
