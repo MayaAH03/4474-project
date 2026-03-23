@@ -23,7 +23,7 @@ export function WordScramble() {
     navigate('/');
     return null;
   }
-
+  selectedWordList.words.sort(() => Math.random() - 0.5); // shuffle words each time game starts
   const currentWord = selectedWordList.words[currentWordIndex];
   const progress = ((currentWordIndex + 1) / selectedWordList.words.length) * 100;
 
