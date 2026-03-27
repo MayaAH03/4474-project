@@ -139,7 +139,7 @@ export function Home() {
           {predefinedWordLists.map((wordList) => (
             <Card
               key={wordList.id}
-              className="w-full h-full hover:shadow-xl transition-shadow cursor-pointer border-2 hover:border-purple-400"
+              className="w-full h-full hover:shadow-xl transition-shadow cursor-pointer border-2 hover:border-purple-400 hover:scale-105"
               onClick={() => handleSelectWordList(wordList)}
             >
               <CardHeader>
