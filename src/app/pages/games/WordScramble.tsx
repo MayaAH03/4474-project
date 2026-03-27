@@ -39,7 +39,6 @@ export function WordScramble() {
   };
 
   useEffect(() => {
-    console.log(currentWordIndex);
     setCurrentWord(selectedWordList.words[currentWordIndex]);
   }, [currentWordIndex]);
 

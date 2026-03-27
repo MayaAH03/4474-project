@@ -41,7 +41,6 @@ export function MissingLetters() {
 
 
   useEffect(() => {
-    console.log(currentWordIndex);
     setCurrentWord(selectedWordList.words[currentWordIndex]);
   }, [currentWordIndex]);
 
