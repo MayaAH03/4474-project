@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import {useState, useEffect, useCallback} from 'react';
 import { useNavigate } from 'react-router';
 import { ArrowLeft, CheckCircle, XCircle, Trophy, RefreshCw } from 'lucide-react';
 import { useGame } from '../../context/GameContext';
@@ -18,13 +18,13 @@ export function WordScramble() {
   const [isCorrect, setIsCorrect] = useState(false);
   const [gameComplete, setGameComplete] = useState(false);
   const [scrambledWord, setScrambledWord] = useState('');
+  const [currentWord, setCurrentWord] = useState('');
 
   if (!selectedWordList) {
     navigate('/');
     return null;
   }
   selectedWordList.words.sort(() => Math.random() - 0.5); // shuffle words each time game starts
-  const currentWord = selectedWordList.words[currentWordIndex];
   const progress = ((currentWordIndex + 1) / selectedWordList.words.length) * 100;
 
   const scrambleWord = (word: string) => {
@@ -39,8 +39,15 @@ export function WordScramble() {
   };
 
   useEffect(() => {
-    setScrambledWord(scrambleWord(currentWord));
-  }, [currentWordIndex, currentWord]);
+    console.log(currentWordIndex);
+    setCurrentWord(selectedWordList.words[currentWordIndex]);
+  }, [currentWordIndex]);
+
+  useEffect(() => {
+    if (currentWord) {
+        setScrambledWord(scrambleWord(currentWord));
+    }
+  }, [currentWord]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
