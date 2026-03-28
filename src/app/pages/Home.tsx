@@ -24,10 +24,12 @@ export function Home() {
   };
 
   const handleCreateCustomList = () => {
+    console.log(customWords);
     const words = customWords
-      .split(',')
+      .split(/[\r\n]+/)
       .map(word => word.trim())
-      .filter(word => word.length > 0);
+      .filter(word => word.length > 0)
+      .filter((value, index, array) => array.indexOf(value) === index);
 
     if (customListName && words.length > 0) {
       const customList: WordList = {
@@ -99,7 +101,7 @@ export function Home() {
               <DialogHeader>
                 <DialogTitle>Create Custom Word List</DialogTitle>
                 <DialogDescription>
-                  Enter a name for your list and add words separated by commas
+                  Enter a name for your list and add words one per line
                 </DialogDescription>
               </DialogHeader>
               <div className="space-y-4">
@@ -113,17 +115,21 @@ export function Home() {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="words">Words (separated by commas)</Label>
+                  <Label htmlFor="words">Words (one per line)</Label>
                   <textarea
                     id="words"
-                    placeholder="cat, dog, bird, fish"
+                    placeholder="cat&#10;dog&#10;bird&#10;fish"
                     value={customWords}
-                    draggable
-                    className="file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input flex h-9 w-full min-w-0 rounded-md border px-3 py-1 text-base bg-input-background transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm
+                    className="file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input flex w-full min-w-0 rounded-md border px-3 py-1 text-base bg-input-background transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm
                       focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px],
                       aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive"
-                    cols={60}
-                    onChange={(e) => setCustomWords(e.target.value)}
+                    rows={6}
+                    onChange={(e) => {
+                      const re = /^[A-Za-z\n]+$/;
+                      if (e.target.value === "" || re.test(e.target.value)) {
+                        setCustomWords(e.target.value)}
+                      }
+                    }
                   />
                 </div>
                 <Button onClick={handleCreateCustomList} className="w-full hover:shadow-xl transition-all cursor-pointer border-2 hover:scale-105">
