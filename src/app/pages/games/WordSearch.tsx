@@ -237,11 +237,10 @@ export function WordSearch() {
   }
 
   return (
-    <div className="min-h-150 p-8" onMouseUp={handleMouseUp}>
-      
+    <div className="min-h-150 pt-[8vh]" onMouseUp={handleMouseUp}>
+      <div className="max-w-4xl mx-auto px-4">
         {/* Header */}
         <div className="w-full mb-6">
-          <div className="px-8">
           <Button
             variant="ghost"
             onClick={() => navigate('/game-options')}
@@ -261,12 +260,9 @@ export function WordSearch() {
             Find all {wordsInPlay.length} words in the grid
           </p>
         </div>
-       </div>
-
-       
 
         {/* Game Layout */}
-        <div className="max-w-6xl mx-auto">
+        <div>
         <div className="flex flex-col lg:flex-row gap-10 items-center justify-center">
           {/* Grid */}
           <Card className="p-4 border-0 flex items-center justify-center">
@@ -348,7 +344,7 @@ export function WordSearch() {
           Click and drag to select a word • Words can go Right, Diagonal, or Vertical
         </p>
       </div>
+      </div>
     </div>
-    
   );
 }
