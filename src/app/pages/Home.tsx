@@ -24,7 +24,6 @@ export function Home() {
   };
 
   const handleCreateCustomList = () => {
-    console.log(customWords);
     const words = customWords
       .split(/[\r\n]+/)
       .map(word => word.trim())
