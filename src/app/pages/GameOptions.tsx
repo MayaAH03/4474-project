@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router';
-import { ArrowLeft, Volume2, Shuffle, ListChecks, Search, ListCollapse } from 'lucide-react';
+import { ArrowLeft, Volume2, Shuffle, Baseline, Search, ListCollapse } from 'lucide-react';
 import { useGame } from '../context/GameContext';
 import { Button } from '../components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
@@ -28,7 +28,7 @@ export function GameOptions() {
       id: 'missing-letters',
       name: 'Missing Letters',
       description: 'Fill in the missing letters to complete the word!',
-      icon: ListChecks,
+      icon: Baseline,
       color: 'from-green-400 to-teal-400',
       path: '/game/missing-letters'
     },

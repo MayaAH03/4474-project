@@ -176,6 +176,7 @@ export function Alphabetical() {
   if (gameComplete) {
     const pct = Math.round((score / words.length) * 100);
     return (
+      //<div className="min-h-screen bg-gradient-to-br from-red-100 via-orange-100 to-yellow-100 p-8 flex items-center justify-center">
       <div className="min-h-screen p-8 flex items-center justify-center">
         <Card className="max-w-md w-full">
           <CardContent className="pt-6 text-center">

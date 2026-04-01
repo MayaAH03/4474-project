@@ -13,6 +13,7 @@ export function MissingLetters() {
   const { selectedWordList } = useGame();
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [userAnswer, setUserAnswer] = useState('');
+  const [currentWord, setCurrentWord] = useState('');
   const [score, setScore] = useState(0);
   const [showFeedback, setShowFeedback] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
@@ -23,8 +24,7 @@ export function MissingLetters() {
     navigate('/');
     return null;
   }
-
-  const currentWord = selectedWordList.words[currentWordIndex];
+  selectedWordList.words.sort(() => Math.random() - 0.5); // shuffle words each time game starts
   const progress = ((currentWordIndex + 1) / selectedWordList.words.length) * 100;
 
   const getRandomIndices = (word: string) => {
@@ -39,9 +39,14 @@ export function MissingLetters() {
     return indices.sort((a, b) => a - b);
   };
 
+
+  useEffect(() => {
+    setCurrentWord(selectedWordList.words[currentWordIndex]);
+  }, [currentWordIndex]);
+
   useEffect(() => {
     setHiddenIndices(getRandomIndices(currentWord));
-  }, [currentWordIndex, currentWord]);
+  }, [currentWord]);
 
   const getDisplayWord = () => {
     return currentWord
