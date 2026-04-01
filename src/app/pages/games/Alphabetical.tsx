@@ -4,6 +4,8 @@ import { ArrowLeft, Trophy, GripVertical, CheckCircle, XCircle, RotateCcw } from
 import { useGame } from '../../context/GameContext';
 import { Button } from '../../components/ui/button';
 import { Card, CardContent } from '../../components/ui/card';
+import '../Home.css';
+
 
 function shuffle<T>(arr: T[]): T[] {
   let currentIndex = arr.length,  randomIndex;
@@ -206,16 +208,14 @@ export function Alphabetical() {
   // Main game screen
 
   return (
-    //<div className="min-h-screen bg-gradient-to-br from-red-100 via-orange-100 to-yellow-100 p-8">
-      //<div className="max-w-2xl mx-auto">
-    <div className="min-h-screen p-16">
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-screen pt-[8vh]">
+      <div className="max-w-2xl mx-auto">
         {/* Header */}
-        <div className="mb-4">
+        <div className="mb-0">
           <Button
             variant="ghost"
             onClick={() => navigate('/game-options')}
-            className="gap-2 mb-2"
+            className="gap-2 mb-2 hover:shadow-xl transition-all cursor-pointer border-2 hover:scale-105"
           >
             <ArrowLeft className="w-4 h-4" />
             Back
@@ -224,12 +224,10 @@ export function Alphabetical() {
           <div className="flex items-center justify-between mb-2">
             <h1 className="text-3xl font-bold text-red-800">Alphabetical | Category: {selectedWordList.name}</h1>
           </div>
-
-        
         </div>
 
         {/* Instructions */}
-        <div className="text-center mb-6">
+        <div className="text-center mb-3">
           <p className="text-xl text-gray-700">
             {checked
               ? 'Here\'s how you did:'
@@ -238,11 +236,11 @@ export function Alphabetical() {
         </div>
 
         {/* Sortable word list */}
-        <Card className="p-6">
+        <Card className="p-3">
           <CardContent>
             <div
               ref={listRef}
-              className="flex flex-col gap-2"
+              className={`flex flex-col ${checked ? 'gap-1' : 'gap-2'}`}
               style={{ touchAction: dragIdx !== null ? 'none' : 'auto' }}
             >
               {words.map((word, idx) => {
@@ -257,7 +255,7 @@ export function Alphabetical() {
                     key={word}
                     onPointerDown={e => handlePointerDown(e, idx)}
                     className={`
-                      flex items-center gap-3 px-4 py-3 rounded-xl border-2 select-none
+                      flex items-center gap-3 px-4 ${checked ? 'py-1' : 'py-2'} rounded-xl border-2 select-none
                       ${checked
                         ? isCorrect
                           ? 'bg-green-50 border-green-400'
@@ -283,7 +281,7 @@ export function Alphabetical() {
                       <XCircle className="w-5 h-5 text-red-600 flex-shrink-0" />
                     )}
 
-                    <span className="text-lg font-medium capitalize">{word}</span>
+                    <span className="text-base font-medium capitalize">{word}</span>
                   </div>
                 );
               })}
@@ -299,17 +297,17 @@ export function Alphabetical() {
                   width: dragWidth,
                 }}
               >
-                <div className="flex items-center gap-3 px-4 py-3 rounded-xl border-2 border-orange-400 bg-white shadow-2xl scale-105">
+                <div className="flex items-center gap-3 px-4 py-2 rounded-xl border-2 border-orange-400 bg-white shadow-2xl scale-105">
                   <GripVertical className="w-5 h-5 text-orange-400 flex-shrink-0" />
-                  <span className="text-lg font-medium capitalize">{words[dragIdx]}</span>
+                  <span className="text-base font-medium capitalize">{words[dragIdx]}</span>
                 </div>
               </div>
             )}
 
             {/* Correct order reference after checking */}
             {checked && (
-              <div className="mt-6 p-4 bg-orange-50 rounded-xl border border-orange-200">
-                <p className="text-sm font-semibold text-orange-800 mb-2">
+              <div className="mt-2 p-2 bg-orange-50 rounded-xl border border-orange-200">
+                <p className="text-sm font-semibold text-orange-800 mb-1">
                   Correct alphabetical order:
                 </p>
                 <p className="text-sm text-orange-700">
@@ -319,7 +317,7 @@ export function Alphabetical() {
             )}
 
             {/* Action buttons */}
-            <div className="mt-6 flex justify-center gap-4">
+            <div className="mt-3 flex justify-center gap-4">
               {!checked ? (
                 <>
                   <Button onClick={handleRestart} variant="outline" className="gap-2">
@@ -331,8 +329,8 @@ export function Alphabetical() {
                   </Button>
                 </>
               ) : (
-                <div className="text-center space-y-4">
-                  <p className="text-2xl font-bold text-orange-700">
+                <div className="text-center space-y-2">
+                  <p className="text-xl font-bold text-orange-700">
                     {score}/{words.length} in the right place!
                   </p>
                   <Button onClick={() => setGameComplete(true)} size="lg">
