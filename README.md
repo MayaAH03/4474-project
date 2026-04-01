@@ -2,7 +2,7 @@
 This web-app is a complete re-design of [Mr.Nussbaum's Spelling Central](https://mrnussbaum.com/spelling-central-online-game) educational game by applying Human-Computer Interaction (HCI) principles to enhance its usability and functionality. 
 
 ## Tech Stack
-The re-design was built using JavaScript and React.js. 
+The re-design was built using **JavaScript** and **React.js**. 
 
 ## Run the App Locally
 **Clone the repository:** <br />
@@ -30,4 +30,8 @@ npm run dev
 ```
 
 Open your browser and go to http://localhost:5173/ to view the app.
+
+## Contributions
+This re-design was completed collaboratively by **Group 7** which included **Ali El-Shamy, Alysha Aul, Carter Watson, Matthew Kleisath, Maya Al Hourani, and Shaylan Pratt**.
+
 
